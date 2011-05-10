@@ -14,8 +14,8 @@
 		6997AE251379C8A400907BEC /* QTVR_FixAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6997AE241379C8A400907BEC /* QTVR_FixAppDelegate.m */; };
 		6997AE281379C8A400907BEC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6997AE261379C8A400907BEC /* MainMenu.xib */; };
 		6997AE2E1379CA8B00907BEC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6997AE2D1379CA8B00907BEC /* main.c */; };
-		6997AE2F1379CBF900907BEC /* qtvrfix.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* qtvrfix.c */; };
-		69ABA91A1377419E005C902D /* qtvrfix.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* qtvrfix.c */; };
+		6997AE2F1379CBF900907BEC /* qtvrfix_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* qtvrfix_c.c */; };
+		69ABA91A1377419E005C902D /* qtvrfix_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* qtvrfix_c.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +47,7 @@
 		6997AE2C1379CA6500907BEC /* qtvrfix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qtvrfix.h; path = qtvrfix/qtvrfix.h; sourceTree = SOURCE_ROOT; };
 		6997AE2D1379CA8B00907BEC /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		69ABA9151377419D005C902D /* qtvrfix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qtvrfix; sourceTree = BUILT_PRODUCTS_DIR; };
-		69ABA9191377419E005C902D /* qtvrfix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qtvrfix.c; sourceTree = "<group>"; };
+		69ABA9191377419E005C902D /* qtvrfix_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qtvrfix_c.c; sourceTree = "<group>"; };
 		69ABA91B1377419E005C902D /* qtvrfix.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = qtvrfix.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				6997AE2D1379CA8B00907BEC /* main.c */,
-				69ABA9191377419E005C902D /* qtvrfix.c */,
+				69ABA9191377419E005C902D /* qtvrfix_c.c */,
 				69ABA91B1377419E005C902D /* qtvrfix.1 */,
 			);
 			path = qtvrfix;
@@ -225,7 +225,7 @@
 			files = (
 				6997AE1F1379C8A400907BEC /* main.m in Sources */,
 				6997AE251379C8A400907BEC /* QTVR_FixAppDelegate.m in Sources */,
-				6997AE2F1379CBF900907BEC /* qtvrfix.c in Sources */,
+				6997AE2F1379CBF900907BEC /* qtvrfix_c.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69ABA91A1377419E005C902D /* qtvrfix.c in Sources */,
+				69ABA91A1377419E005C902D /* qtvrfix_c.c in Sources */,
 				6997AE2E1379CA8B00907BEC /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
