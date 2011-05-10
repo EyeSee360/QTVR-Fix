@@ -46,6 +46,7 @@
 		6997AE271379C8A400907BEC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6997AE2C1379CA6500907BEC /* qtvrfix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qtvrfix.h; path = qtvrfix/qtvrfix.h; sourceTree = SOURCE_ROOT; };
 		6997AE2D1379CA8B00907BEC /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		6997AE30137A01EA00907BEC /* qtvrfix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qtvrfix.c; sourceTree = "<group>"; };
 		69ABA9151377419D005C902D /* qtvrfix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qtvrfix; sourceTree = BUILT_PRODUCTS_DIR; };
 		69ABA9191377419E005C902D /* qtvrfix_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qtvrfix_c.c; sourceTree = "<group>"; };
 		69ABA91B1377419E005C902D /* qtvrfix.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = qtvrfix.1; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		69ABA9181377419D005C902D /* qtvrfix */ = {
 			isa = PBXGroup;
 			children = (
+				6997AE30137A01EA00907BEC /* qtvrfix.c */,
 				6997AE2D1379CA8B00907BEC /* main.c */,
 				69ABA9191377419E005C902D /* qtvrfix_c.c */,
 				69ABA91B1377419E005C902D /* qtvrfix.1 */,
