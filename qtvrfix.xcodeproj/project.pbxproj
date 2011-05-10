@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69ABA91A1377419E005C902D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* main.c */; };
+		6997AE121379C8A400907BEC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6997AE111379C8A400907BEC /* Cocoa.framework */; };
+		6997AE1C1379C8A400907BEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6997AE1A1379C8A400907BEC /* InfoPlist.strings */; };
+		6997AE1F1379C8A400907BEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6997AE1E1379C8A400907BEC /* main.m */; };
+		6997AE221379C8A400907BEC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6997AE201379C8A400907BEC /* Credits.rtf */; };
+		6997AE251379C8A400907BEC /* QTVR_FixAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6997AE241379C8A400907BEC /* QTVR_FixAppDelegate.m */; };
+		6997AE281379C8A400907BEC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6997AE261379C8A400907BEC /* MainMenu.xib */; };
+		6997AE2E1379CA8B00907BEC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6997AE2D1379CA8B00907BEC /* main.c */; };
+		6997AE2F1379CBF900907BEC /* qtvrfix.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* qtvrfix.c */; };
+		69ABA91A1377419E005C902D /* qtvrfix.c in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA9191377419E005C902D /* qtvrfix.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,12 +31,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6997AE0E1379C8A400907BEC /* QTVR Fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QTVR Fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6997AE111379C8A400907BEC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6997AE141379C8A400907BEC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6997AE151379C8A400907BEC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6997AE161379C8A400907BEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6997AE191379C8A400907BEC /* QTVR Fix-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QTVR Fix-Info.plist"; sourceTree = "<group>"; };
+		6997AE1B1379C8A400907BEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6997AE1D1379C8A400907BEC /* QTVR Fix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QTVR Fix-Prefix.pch"; sourceTree = "<group>"; };
+		6997AE1E1379C8A400907BEC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6997AE211379C8A400907BEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		6997AE231379C8A400907BEC /* QTVR_FixAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTVR_FixAppDelegate.h; sourceTree = "<group>"; };
+		6997AE241379C8A400907BEC /* QTVR_FixAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTVR_FixAppDelegate.m; sourceTree = "<group>"; };
+		6997AE271379C8A400907BEC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6997AE2C1379CA6500907BEC /* qtvrfix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qtvrfix.h; path = qtvrfix/qtvrfix.h; sourceTree = SOURCE_ROOT; };
+		6997AE2D1379CA8B00907BEC /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		69ABA9151377419D005C902D /* qtvrfix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qtvrfix; sourceTree = BUILT_PRODUCTS_DIR; };
-		69ABA9191377419E005C902D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		69ABA9191377419E005C902D /* qtvrfix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = qtvrfix.c; sourceTree = "<group>"; };
 		69ABA91B1377419E005C902D /* qtvrfix.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = qtvrfix.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6997AE0B1379C8A400907BEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6997AE121379C8A400907BEC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69ABA9121377419D005C902D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,10 +70,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6997AE101379C8A400907BEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6997AE111379C8A400907BEC /* Cocoa.framework */,
+				6997AE131379C8A400907BEC /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6997AE131379C8A400907BEC /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6997AE141379C8A400907BEC /* AppKit.framework */,
+				6997AE151379C8A400907BEC /* CoreData.framework */,
+				6997AE161379C8A400907BEC /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6997AE171379C8A400907BEC /* QTVR Fix */ = {
+			isa = PBXGroup;
+			children = (
+				6997AE231379C8A400907BEC /* QTVR_FixAppDelegate.h */,
+				6997AE241379C8A400907BEC /* QTVR_FixAppDelegate.m */,
+				6997AE261379C8A400907BEC /* MainMenu.xib */,
+				6997AE2C1379CA6500907BEC /* qtvrfix.h */,
+				6997AE181379C8A400907BEC /* Supporting Files */,
+			);
+			path = "QTVR Fix";
+			sourceTree = "<group>";
+		};
+		6997AE181379C8A400907BEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6997AE191379C8A400907BEC /* QTVR Fix-Info.plist */,
+				6997AE1A1379C8A400907BEC /* InfoPlist.strings */,
+				6997AE1D1379C8A400907BEC /* QTVR Fix-Prefix.pch */,
+				6997AE1E1379C8A400907BEC /* main.m */,
+				6997AE201379C8A400907BEC /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		69ABA90A1377419D005C902D = {
 			isa = PBXGroup;
 			children = (
 				69ABA9181377419D005C902D /* qtvrfix */,
+				6997AE171379C8A400907BEC /* QTVR Fix */,
+				6997AE101379C8A400907BEC /* Frameworks */,
 				69ABA9161377419D005C902D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				69ABA9151377419D005C902D /* qtvrfix */,
+				6997AE0E1379C8A400907BEC /* QTVR Fix.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,7 +135,8 @@
 		69ABA9181377419D005C902D /* qtvrfix */ = {
 			isa = PBXGroup;
 			children = (
-				69ABA9191377419E005C902D /* main.c */,
+				6997AE2D1379CA8B00907BEC /* main.c */,
+				69ABA9191377419E005C902D /* qtvrfix.c */,
 				69ABA91B1377419E005C902D /* qtvrfix.1 */,
 			);
 			path = qtvrfix;
@@ -67,6 +145,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6997AE0D1379C8A400907BEC /* QTVR Fix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6997AE291379C8A400907BEC /* Build configuration list for PBXNativeTarget "QTVR Fix" */;
+			buildPhases = (
+				6997AE0A1379C8A400907BEC /* Sources */,
+				6997AE0B1379C8A400907BEC /* Frameworks */,
+				6997AE0C1379C8A400907BEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QTVR Fix";
+			productName = "QTVR Fix";
+			productReference = 6997AE0E1379C8A400907BEC /* QTVR Fix.app */;
+			productType = "com.apple.product-type.application";
+		};
 		69ABA9141377419D005C902D /* qtvrfix */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69ABA91E1377419E005C902D /* Build configuration list for PBXNativeTarget "qtvrfix" */;
@@ -105,22 +200,104 @@
 			projectRoot = "";
 			targets = (
 				69ABA9141377419D005C902D /* qtvrfix */,
+				6997AE0D1379C8A400907BEC /* QTVR Fix */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		6997AE0C1379C8A400907BEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6997AE1C1379C8A400907BEC /* InfoPlist.strings in Resources */,
+				6997AE221379C8A400907BEC /* Credits.rtf in Resources */,
+				6997AE281379C8A400907BEC /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		6997AE0A1379C8A400907BEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6997AE1F1379C8A400907BEC /* main.m in Sources */,
+				6997AE251379C8A400907BEC /* QTVR_FixAppDelegate.m in Sources */,
+				6997AE2F1379CBF900907BEC /* qtvrfix.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		69ABA9111377419D005C902D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69ABA91A1377419E005C902D /* main.c in Sources */,
+				69ABA91A1377419E005C902D /* qtvrfix.c in Sources */,
+				6997AE2E1379CA8B00907BEC /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		6997AE1A1379C8A400907BEC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6997AE1B1379C8A400907BEC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6997AE201379C8A400907BEC /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6997AE211379C8A400907BEC /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		6997AE261379C8A400907BEC /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6997AE271379C8A400907BEC /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		6997AE2A1379C8A400907BEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QTVR Fix/QTVR Fix-Prefix.pch";
+				INFOPLIST_FILE = "QTVR Fix/QTVR Fix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6997AE2B1379C8A400907BEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QTVR Fix/QTVR Fix-Prefix.pch";
+				INFOPLIST_FILE = "QTVR Fix/QTVR Fix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		69ABA91C1377419E005C902D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -160,6 +337,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -171,6 +349,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -178,6 +357,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6997AE291379C8A400907BEC /* Build configuration list for PBXNativeTarget "QTVR Fix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6997AE2A1379C8A400907BEC /* Debug */,
+				6997AE2B1379C8A400907BEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		69ABA90F1377419D005C902D /* Build configuration list for PBXProject "qtvrfix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -194,6 +381,7 @@
 				69ABA9201377419E005C902D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
