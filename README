@@ -1,0 +1,49 @@
+QTVRFIX
+Copyright 2011 by EyeSee360, Inc.
+
+A bug was introduced in QuickTime 7.6.9 on both the Mac OS X and Windows platforms. Certain QuickTime VR movies which played correctly under prior QuickTime versions will now crash whenever the mouse cursor moves over the content region. The affected movies are QuickTime VR movies with a cylindrical projection which do not have an associated hot spot track.
+
+This fix alters the 'pano' sample in the movie to change how the empty hot spot track is defined. The movies are altered in-place. Movies repaired with this tool are fully backwards and forwards compatible. If applied to movies unaffected by this particular bug, the tool will do nothing.
+
+
+BUILDING ON MAC OS X
+
+Two versions of the tool are included for Mac OS X: A command line tool (qtvrfix) and a simple Cocoa application (QTVR Fix.app). An XCode project is included with targets for each of these tools. They can be built in XCode 3.2 or above, or with the command line "xcodebuild" tool.
+
+
+USING THE TOOL
+
+The command line tool uses the following format:
+
+qtvrfix [file1.mov ...]
+
+The tool should ONLY be applied to valid QuickTime movie files. The results of applying the fix to other files is undefined and unverified.
+
+The QTVR Fix.app tool shows a simple window. Click the "Open..." button and select one or more QuickTime VR movie files (with a .mov extension) and select "Open". The files will be fixed immediately. The results are displayed in the list box, along with any errors that may have occurred. 
+
+The tool changes only a few bytes in each file, so it runs very fast.
+
+
+ABOUT THE SOURCE
+
+The file "qtvrfix_c.c" performs the essential operation. It's a C99 compliant file with only standard POSIX dependencies (file I/O and mmap, notably). It will compile easily on other POSIX-compliant operating systems (including Linux and BSD, excluding Windows unless under Cygwin or similar). 
+
+Another file "qtvrfix.c" has an equivalent implementation which uses C blocks. This code reads better, but is only generally compatible with Snow Leopard and its compiler and runtime suite. It may be of interest for academic purposes as a simple Movie parser/enumerator using blocks.
+
+
+
+LICENSE
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
