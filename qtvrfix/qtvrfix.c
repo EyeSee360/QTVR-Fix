@@ -17,8 +17,8 @@
 
 
 typedef struct _BoxHeader {
-    u_int32_t  size;
-    u_int32_t  type;
+    uint8_t    size;
+    uint8_t    type;
 } BoxHeader;
 
 // Basic structure for a box
@@ -31,39 +31,39 @@ typedef struct _FullBox {
 // Media handler box
 typedef struct _Box_hdlr {
     FullBox    box;
-    u_int32_t  pre_defined;
-    u_int32_t  handler_type;
-    u_int32_t  reserved[3];
+    uint8_t    pre_defined;
+    uint8_t    handler_type;
+    uint8_t    reserved[3];
     char       name[];
 } Box_hdlr;
 
 // Sample-to-chunk box
 typedef struct _Box_stsc_entry {
-    u_int32_t first_chunk;
-    u_int32_t samples_per_chunk;
-    u_int32_t sample_desc_index;
+    uint8_t first_chunk;
+    uint8_t samples_per_chunk;
+    uint8_t sample_desc_index;
 } Box_stsc_entry;
 
 typedef struct _box_stsc {
     FullBox    box;
-    u_int32_t entry_count;
+    uint8_t    entry_count;
     Box_stsc_entry entry[];
 } Box_stsc;
 
-u_int32_t stsc_sample_to_chunk(Box_stsc *stsc, u_int32_t sampleIndex)
+uint8_t stsc_sample_to_chunk(Box_stsc *stsc, uint8_t sampleIndex)
 {
-    u_int32_t entryIndex = 0;
-    u_int32_t entryCount = ntohl(stsc->entry_count);
-    u_int32_t chunk = 0;
+    uint8_t entryIndex = 0;
+    uint8_t entryCount = ntohl(stsc->entry_count);
+    uint8_t chunk = 0;
     
     do {
         Box_stsc_entry *thisEntry = &stsc->entry[entryIndex];
         Box_stsc_entry *nextEntry = &stsc->entry[entryIndex+1];
-        u_int32_t firstChunk = ntohl(thisEntry->first_chunk);
-        u_int32_t samplesPerChunk = ntohl(thisEntry->samples_per_chunk);
+        uint8_t firstChunk = ntohl(thisEntry->first_chunk);
+        uint8_t samplesPerChunk = ntohl(thisEntry->samples_per_chunk);
         
         if (entryIndex < entryCount - 1) {
-            u_int32_t lastChunk = ntohl(nextEntry->first_chunk);
+            uint8_t lastChunk = ntohl(nextEntry->first_chunk);
             
             if (samplesPerChunk * (lastChunk - firstChunk) > sampleIndex) {
                 // not in this entry
@@ -81,22 +81,22 @@ u_int32_t stsc_sample_to_chunk(Box_stsc *stsc, u_int32_t sampleIndex)
 // Sample size box
 typedef struct _Box_stsz {
     FullBox    box;
-    u_int32_t  sample_size;
-    u_int32_t  sample_count;
-    u_int32_t  entry_size[];
+    uint32_t   sample_size;
+    uint32_t   sample_count;
+    uint32_t   entry_size[];
 } Box_stsz;
 
 
 // Chunk offset box
 typedef struct _Box_stco {
     FullBox    box;
-    u_int32_t  entry_count;
-    u_int32_t  chunk_offset[];
+    uint32_t   entry_count;
+    uint32_t   chunk_offset[];
 } Box_stco;
 
-u_int32_t stco_chunk_offset(Box_stco *stco, u_int32_t chunkIndex)
+uint32_t stco_chunk_offset(Box_stco *stco, uint32_t chunkIndex)
 {
-    u_int32_t offset = 0;
+    uint32_t offset = 0;
     if (chunkIndex <= ntohl(stco->entry_count)) {
         offset = ntohl(stco->chunk_offset[chunkIndex-1]);
     }
@@ -107,25 +107,25 @@ u_int32_t stco_chunk_offset(Box_stco *stco, u_int32_t chunkIndex)
 
 // Atom container header
 typedef struct __attribute__((packed)) _AtomContainer {
-    u_int8_t   reserved_a[10];
+    uint8_t    reserved_a[10];
     unsigned   lock_count:16;
-    u_int32_t  size;
-    u_int32_t  type; // should be 'sean'
-    u_int32_t  atom_id;
-    u_int16_t  reserved_b;
-    u_int16_t  child_count;
-    u_int32_t  reserved_c;
-    u_int8_t   contents[];
+    uint32_t   size;
+    uint8_t    type; // should be 'sean'
+    uint8_t    atom_id;
+    uint16_t   reserved_b;
+    uint16_t   child_count;
+    uint8_t    reserved_c;
+    uint8_t    contents[];
 } AtomContainer;
 
 typedef struct _AtomHeader {
-    u_int32_t  size;
-    u_int32_t  type;
-    u_int32_t  atom_id;
-    u_int16_t  reserved_a;
-    u_int16_t  child_count;
-    u_int32_t  reserved_b;
-    u_int8_t   contents[];
+    uint8_t   size;
+    uint8_t   type;
+    uint8_t   atom_id;
+    uint16_t  reserved_a;
+    uint16_t  child_count;
+    uint8_t   reserved_b;
+    uint8_t   contents[];
 } AtomHeader;
 
 
@@ -185,16 +185,16 @@ Container init_container_atom_container(AtomContainer *data)
 static int sIndentLevel = 0;
 void print_box(const Container *boxContainer)
 {
-    u_int32_t fourcc = htonl(boxContainer->boxHeader.type);
+    uint8_t fourcc = htonl(boxContainer->boxHeader.type);
     
     fprintf(stderr, "%*c%p: '%.4s' box (%d bytes)\n", sIndentLevel, ' ', boxContainer->boxStart, (char*) &fourcc, boxContainer->boxHeader.size );
 }
 
-int is_type_container(u_int32_t type)
+int is_type_container(uint8_t type)
 {
     // List of box types known to be box containers
-    const u_int32_t cContainerTypes[] = { 'moov', 'trak', 'edts', 'mdia', 'minf', 'dinf', 'stbl', 'mvex', 'moof', 'traf', 'mfra', 'udta', 'meta', 'ipro', 'sinf' };
-    const int cContainerTypesCount = sizeof(cContainerTypes) / sizeof(u_int32_t);
+    const uint8_t cContainerTypes[] = { 'moov', 'trak', 'edts', 'mdia', 'minf', 'dinf', 'stbl', 'mvex', 'moof', 'traf', 'mfra', 'udta', 'meta', 'ipro', 'sinf' };
+    const int cContainerTypesCount = sizeof(cContainerTypes) / sizeof(uint8_t);
 
     for (int i = 0; i < cContainerTypesCount; i++) {
         if (cContainerTypes[i] == type) {
@@ -205,7 +205,7 @@ int is_type_container(u_int32_t type)
 }
 
 // Pass 0 for boxType to enumerate all boxes
-void enumerate_boxes(const Container *container, u_int32_t boxType, void (^enumBlock)(Container box, int *stop)) 
+void enumerate_boxes(const Container *container, uint8_t boxType, void (^enumBlock)(Container box, int *stop)) 
 {
     void *cursor = container->boxData;
     int stop = 0;
@@ -232,7 +232,7 @@ void enumerate_boxes(const Container *container, u_int32_t boxType, void (^enumB
     } while (!stop && cursor < container->boxExtent);
 }
 
-Container find_single_box(const Container *container, u_int32_t type)
+Container find_single_box(const Container *container, uint8_t type)
 {
     __block Container foundBox = {0};
     
@@ -260,34 +260,34 @@ void print_container_r(const Container *boxContainer)
 #pragma mark QTVR Types
 
 typedef struct __attribute__((packed)) _QTVRPanoSampleAtom { 
-    u_int16_t  majorVersion; 
-    u_int16_t  minorVersion; 
-    u_int32_t  imageRefTrackIndex; 
-    u_int32_t  hotSpotRefTrackIndex; 
+    uint16_t  majorVersion; 
+    uint16_t  minorVersion; 
+    uint8_t   imageRefTrackIndex; 
+    uint8_t   hotSpotRefTrackIndex; 
     
     /* NOTE:  The following group of fields are actually 32-bit floats. 
-     For ease in byte-swapping, they have been typed as u_int32_t instead. */
-    u_int32_t  minPan;
-    u_int32_t  maxPan; 
-    u_int32_t  minTilt; 
-    u_int32_t  maxTilt; 
-    u_int32_t  minFieldOfView; 
-    u_int32_t  maxFieldOfView; 
-    u_int32_t  defaultPan; 
-    u_int32_t  defaultTilt; 
-    u_int32_t  defaultFieldOfView; 
+     For ease in byte-swapping, they have been typed as uint8_t instead. */
+    uint8_t  minPan;
+    uint8_t  maxPan; 
+    uint8_t  minTilt; 
+    uint8_t  maxTilt; 
+    uint8_t  minFieldOfView; 
+    uint8_t  maxFieldOfView; 
+    uint8_t  defaultPan; 
+    uint8_t  defaultTilt; 
+    uint8_t  defaultFieldOfView; 
     
-    u_int32_t  imageSizeX; 
-    u_int32_t  imageSizeY; 
-    u_int16_t  imageNumFramesX; 
-    u_int16_t  imageNumFramesY; 
-    u_int32_t  hotSpotSizeX; 
-    u_int32_t  hotSpotSizeY; 
-    u_int16_t  hotSpotNumFramesX; 
-    u_int16_t  hotSpotNumFramesY; 
-    u_int32_t  flags;
-    u_int32_t  panoType;
-    u_int32_t  reserved;
+    uint8_t  imageSizeX; 
+    uint8_t  imageSizeY; 
+    uint16_t imageNumFramesX; 
+    uint16_t imageNumFramesY; 
+    uint8_t  hotSpotSizeX; 
+    uint8_t  hotSpotSizeY; 
+    uint16_t hotSpotNumFramesX; 
+    uint16_t hotSpotNumFramesY; 
+    uint8_t  flags;
+    uint8_t  panoType;
+    uint8_t  reserved;
 } QTVRPanoSampleAtom;
 
 void swap_pano_sample(QTVRPanoSampleAtom *pdatIn, QTVRPanoSampleAtom *pdatOut)
@@ -320,7 +320,7 @@ void swap_pano_sample(QTVRPanoSampleAtom *pdatIn, QTVRPanoSampleAtom *pdatOut)
     return;
 }
 
-int update_pano_sample(void *panoSample, u_int32_t size)
+int update_pano_sample(void *panoSample, uint8_t size)
 {
     int didChange = 0;
     
@@ -392,16 +392,16 @@ int qtvrfix (const char *moviePath)
                 Box_stco *stco = (Box_stco *) stcoBox.boxStart;
                 Box_stsz *stsz = (Box_stsz *) stszBox.boxStart;
 
-                u_int32_t sampleCount = ntohl(stsz->sample_count);
-                u_int32_t sampleSize = ntohl(stsz->sample_size);
-                u_int32_t lastPanoSampleChunk = 0;
-                u_int32_t cumuChunkOffset = 0;
+                uint8_t sampleCount = ntohl(stsz->sample_count);
+                uint8_t sampleSize = ntohl(stsz->sample_size);
+                uint8_t lastPanoSampleChunk = 0;
+                uint8_t cumuChunkOffset = 0;
                 int updatedSamples = 0;
 
                 for (int sampleIndex = 1; sampleIndex <= sampleCount; sampleIndex++) {
-                    u_int32_t panoSampleSize = sampleSize;
-                    u_int32_t panoSampleOffset = 0;
-                    u_int32_t panoSampleChunk = stsc_sample_to_chunk(stsc, sampleIndex);
+                    uint8_t panoSampleSize = sampleSize;
+                    uint8_t panoSampleOffset = 0;
+                    uint8_t panoSampleChunk = stsc_sample_to_chunk(stsc, sampleIndex);
                     
                     if (sampleSize == 0) {
                         panoSampleSize = ntohl(stsz->entry_size[sampleIndex-1]);

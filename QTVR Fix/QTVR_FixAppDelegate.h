@@ -12,14 +12,18 @@
 @private
     NSWindow *window;
     NSTextField *title;
-    NSProgressIndicator *progressBar;
-    NSTextField *status;
+    NSMutableArray *results;
+    NSString *lastError;
+    NSArrayController *resultsController;
+    
+    NSFileHandle *_pipeReadHandle;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSTextField *title;
-@property (assign) IBOutlet NSProgressIndicator *progressBar;
-@property (assign) IBOutlet NSTextField *status;
+@property (nonatomic, retain) NSMutableArray *results;
+@property (nonatomic, copy) NSString *lastError;
+@property (nonatomic, retain) IBOutlet NSArrayController *resultsController;
 
 - (IBAction) open:(id)sender;
 

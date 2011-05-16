@@ -13,48 +13,77 @@
 
 @synthesize window;
 @synthesize title;
-@synthesize progressBar;
-@synthesize status;
+@synthesize results;
+@synthesize lastError;
+
+- (void)dealloc
+{
+    if (_pipeReadHandle) {
+        [_pipeReadHandle release];
+    }
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
     [window makeKeyAndOrderFront:self];
     [window center];
+    
+    [self setResults:[NSMutableArray arrayWithCapacity:0]];
 }
 
 - (IBAction)open:(id)sender
 {
     NSOpenPanel *op = [NSOpenPanel openPanel];
+    [op setAllowsMultipleSelection:YES];
     [op runModalForTypes:[NSArray arrayWithObjects:@"mov", nil]];
     
     [self application:NSApp openFiles:[op filenames]];
 }
 
+- (void)handleStderr:(NSNotification *)notification
+{
+    [_pipeReadHandle readInBackgroundAndNotify];
+    
+    NSData *data = [[notification userInfo] objectForKey: NSFileHandleNotificationDataItem];
+    NSString *str = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+
+    [self setLastError:str];
+}
+
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
-    [progressBar setMaxValue:[filenames count]];
-    
     int result = 0;
     
     [title setStringValue:NSLocalizedString(@"Fixing movies...", @"")];
     
+    NSPipe *pipe = [NSPipe pipe];
+    _pipeReadHandle = [pipe fileHandleForReading];
+    dup2([[pipe fileHandleForWriting] fileDescriptor], fileno(stderr)) ;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleStderr:) 
+                                                 name:NSFileHandleReadCompletionNotification 
+                                               object:_pipeReadHandle];
+    [_pipeReadHandle readInBackgroundAndNotify];
+    
     for (NSString *filename in filenames) {
-        [status setStringValue:[filename lastPathComponent]];
-
         result = qtvrfix([filename UTF8String]);
-        if (result == 0) {
-            [progressBar incrementBy:1.0];
-        } else {
-            [status setStringValue:[NSString stringWithFormat:NSLocalizedString(@"An error occurred: %d", @""), result]];
-            NSBeep();
-            break;
-        }
+        NSString *error = [self lastError];
+        if (!error) error = @"";
+        NSString *resultString = (result == 0) ? @"Fixed" : @"Error";
+        
+        NSDictionary *fileDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [filename lastPathComponent], @"filename", 
+                                  error, @"error",
+                                  resultString, @"status",
+                                  [NSNumber numberWithInt:result], @"resultCode",
+                                  nil];
+        [resultsController addObject:fileDict];
     }
     [title setStringValue:NSLocalizedString(@"Finished!", @"")];
     
     NSBeep();
-    [NSApp performSelector:@selector(terminate:) withObject:self afterDelay:2.0];
 }
 
 @end
