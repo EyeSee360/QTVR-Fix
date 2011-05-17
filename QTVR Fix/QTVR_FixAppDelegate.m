@@ -29,6 +29,7 @@
 @synthesize title;
 @synthesize results;
 @synthesize lastError;
+@synthesize resultsController;
 
 - (void)dealloc
 {
